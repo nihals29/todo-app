@@ -51,8 +51,11 @@ class todoCard extends StatelessWidget {
                             alignment: Alignment.topRight,
                             child: IconButton(
                               icon: Icon(Icons.delete),
-                              onPressed: () {                                
-                                remove_todocard(todoitem.index);
+                              onPressed: () {
+                                setstate() {
+                                  remove_todocard(todoitem.index);
+                              //refreah the state here
+                                }
                               },
                             ),
                           ),
