@@ -1,7 +1,9 @@
-
 import 'package:todo_rev1/data/todoList.dart';
 import 'package:todo_rev1/models/models.dart';
+import 'package:todo_rev1/main.dart';
 
-todoItem remove_todocard(int index) {
-  return todocard_list.removeAt(index);
+void remove_todocard(int index) {
+  MyHomePage homePage;
+  todocard_list.removeAt(index);
+  MyHomePage(title: "lol",);
 }

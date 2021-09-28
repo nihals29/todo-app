@@ -49,7 +49,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         title: Text(widget.title),
       ),
-      body: builder_todolist(),
+      body: Scaffold(
+        body: builder_todolist(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showdialog,
         tooltip: 'Add Task',
@@ -97,6 +99,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.pop(context);
                     taskcontroller.clear();
                     desccontroller.clear();
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => MyHomePage(title: widget.title,)));
                   });
                 },
                 child: const Padding(
