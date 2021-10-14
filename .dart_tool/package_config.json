@@ -152,8 +152,26 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "sqflite",
+      "rootUri": "file:///C:/Users/nihal/Downloads/flutter_windows_2.2.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.0.0+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "sqflite_common",
+      "rootUri": "file:///C:/Users/nihal/Downloads/flutter_windows_2.2.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite_common-2.0.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "string_scanner",
       "rootUri": "file:///C:/Users/nihal/Downloads/flutter_windows_2.2.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "synchronized",
+      "rootUri": "file:///C:/Users/nihal/Downloads/flutter_windows_2.2.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/synchronized-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -212,7 +230,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-09-28T14:23:45.925108Z",
+  "generated": "2021-10-12T14:38:42.157623Z",
   "generator": "pub",
   "generatorVersion": "2.14.0"
 }

@@ -8,4 +8,12 @@ class todoItem {
     required this.taskDesc,
     required this.index,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'task': task,
+      'taskDesc': taskDesc,
+      'id': index,
+    };
+  }
 }

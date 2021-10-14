@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_rev1/data/todoList.dart';
 import 'package:todo_rev1/models/todoItem.dart';
+import 'package:todo_rev1/taskdata.dart';
 import 'package:todo_rev1/widgets/builder_todolist.dart';
+
+import 'data/database_helper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,15 +22,15 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       darkTheme: ThemeData.dark(),
-      home: SafeArea(child: const MyHomePage(title: 'TODO REv1')),
+      home: SafeArea(child: const MyHomePage()),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -36,6 +39,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final taskcontroller = TextEditingController();
   final desccontroller = TextEditingController();
+  DatabaseHelper _databaseHelper = DatabaseHelper();
+  builder_todolist buildertodo = builder_todolist();
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //thememode
           },
         ),
-        title: Text(widget.title),
+        title: Text("TODO-app"),
       ),
       body: Scaffold(
         body: builder_todolist(),
@@ -92,15 +97,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all(Colors.lightBlue)),
                 onPressed: () {
                   setState(() {
-                    todocard_list.add(todoItem(
-                        task: taskcontroller.text,
-                        taskDesc: desccontroller.text,
-                        index: todocard_list.length));
+                   // builder_todolist(task: task, taskDesc: taskDesc));
                     Navigator.pop(context);
                     taskcontroller.clear();
                     desccontroller.clear();
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (_) => MyHomePage(title: widget.title,)));
+                    // Navigator.push(
+                    //     context, MaterialPageRoute(builder: (_) => builder_todolist()));
                   });
                 },
                 child: const Padding(

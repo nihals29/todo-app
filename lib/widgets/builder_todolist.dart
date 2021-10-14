@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo_rev1/data/todoList.dart';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+import 'package:todo_rev1/data/database_helper.dart';
+
+import 'package:todo_rev1/models/models.dart';
+
 import 'package:todo_rev1/widgets/todocards.dart';
 
 class builder_todolist extends StatefulWidget {
@@ -14,43 +15,37 @@ class builder_todolist extends StatefulWidget {
 }
 
 class _builder_todolistState extends State<builder_todolist> {
+  DatabaseHelper _databaseHelper = DatabaseHelper();
+
   @override
   Widget build(BuildContext context) {
-    
-      _save() async {
-        final directory = await getApplicationDocumentsDirectory();
-        final file = File('${directory.path}/my_file.txt');
-        final text = 'Hello World!';
-        await file.writeAsString(text);
-        print('saved');
-      }
-    return ListView.builder(
-        itemCount: todocard_list.length,
-        itemBuilder: (_, int index) {
-          return todoCard(todoitem: todocard_list[index]);
+    return FutureBuilder(
+        initialData: [],
+        future: _databaseHelper.getTasks(),
+        builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.data == null) {
+            return Center(
+              child: Container(
+                child: Text("Loading"),
+              ),
+            );
+          } else {
+            return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index) {
+                  _databaseHelper.insertTasks(todoItem(
+                      task: this.tasktitle,
+                      taskDesc: this.taskdesc,
+                      index: index));
+                  print(snapshot.data.length);
+                  // return Card(child: Center(child: Text("asdasdas"),),);
+                  return todoCard(
+                      todoitem: todoItem(
+                          task: snapshot.data[index].task,
+                          taskDesc: snapshot.data[index].taskDesc,
+                          index: snapshot.data[index].index));
+                });
+          }
         });
   }
 }
-
-//read and write the file 
-//next: update the file and data in the fire base
-
-
-//  _read() async {
-//         try {
-//           final directory = await getApplicationDocumentsDirectory();
-//           final file = File('${directory.path}/my_file.txt');
-//           String text = await file.readAsString();
-//           print(text);
-//         } catch (e) {
-//           print("Couldn't read file");
-//         }
-//       }
-      
-//       _save() async {
-//         final directory = await getApplicationDocumentsDirectory();
-//         final file = File('${directory.path}/my_file.txt');
-//         final text = 'Hello World!';
-//         await file.writeAsString(text);
-//         print('saved');
-//       }
